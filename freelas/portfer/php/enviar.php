@@ -1,19 +1,20 @@
 <?php
 
-	$destinatario = 'contato@tunemycase.com';
+	// $destinatario = 'fernandamontanher@yahoo.com.br';
+	$destinatario = 'oliveira.douglas@outlook.com';
 
-	$usuario = 'imagem@tunemycase.com.br';
+	$nomeDestinatario = 'Fernanda Montanher';
 
-	$senha = 'tune2013';
+	$usuario = 'contato@novadelicia.com.br';
+
+	$senha = 'ct159357';
 
 	// abaixo as veriaveis principais, que devem conter em seu formulario
-	$nome = $_POST['nome'];
+	$nome           = $_POST['nome'];
 	$emailRemetente = $_POST['email'];
-	$msg = $_POST['msg'];
-	$assunto = "Email de contato:";
-	$_POST['mensagem'] = nl2br('E-mail de retorno: '. $msg ."
-
-	". $_POST['mensagem']);
+	$msg            = $_POST['msg'];
+	$assunto        = "Email de contato!";
+	$_POST['msg']   = nl2br('Nome: '. $nome ."\r\n". 'E-mail de retorno: '. $emailRemetente ."\r\n". 'Assunto: '. $_POST['msg']);
 
 	// *********************************** A PARTIR DAQUI NAO ALTERAR ***********************************
 
@@ -21,25 +22,25 @@
 
 	$To = $destinatario;
 	$Subject = $assunto;
-	$Message = $_POST['mensagem'];
+	$Message = $_POST['msg'];
 
-	$Host = 'smtp.'.substr(strstr($usuario, '@'), 1);
+	$Host     = 'smtp.'.substr(strstr($usuario, '@'), 1);
+	$Port     = "587";
 	$Username = $usuario;
 	$Password = $senha;
-	$Port = "587";
 
 	$mail = new PHPMailer();
 	$body = $Message;
-	$mail->CharSet = 'UTF-8';
+	$mail->CharSet   = 'UTF-8';
 	$mail->IsSMTP(); // telling the class to use SMTP
-	$mail->Host = $Host; // SMTP server
+	$mail->Host      = $Host; // SMTP server
 	$mail->SMTPDebug = 0; // enables SMTP debug information (for testing)
-	$mail->SMTPAuth = true; // enable SMTP authentication
-	$mail->Port = $Port; // set the SMTP port for the service server
-	$mail->Username = $Username; // account username
-	$mail->Password = $Password; // account password
+	$mail->SMTPAuth  = true; // enable SMTP authentication
+	$mail->Port      = $Port; // set the SMTP port for the service server
+	$mail->Username  = $Username; // account username
+	$mail->Password  = $Password; // account password
 	$mail->SetFrom($usuario, $nomeDestinatario);
-	$mail->Subject = $Subject;
+	$mail->Subject   = $Subject;
 	$mail->MsgHTML($body);
 	$mail->AddAddress($To, "");
 
