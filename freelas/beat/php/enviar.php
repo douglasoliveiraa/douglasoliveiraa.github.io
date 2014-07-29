@@ -1,6 +1,5 @@
 <?php
 
-	// $destinatario = 'fernandamontanher@yahoo.com.br';
 	$destinatario = 'oliveira.douglas@outlook.com';
 
 	$nomeDestinatario = 'BEAT';
@@ -12,9 +11,10 @@
 	// abaixo as veriaveis principais, que devem conter em seu formulario
 	$nome           = $_POST['nome'];
 	$emailRemetente = $_POST['email'];
+	$telefone       = $_POST['tel'];
 	$msg            = $_POST['msg'];
 	$assunto        = "Email de contato!";
-	$_POST['msg']   = nl2br('Nome: '. $nome ."\r\n". 'E-mail de retorno: '. $emailRemetente ."\r\n". 'Assunto: '. $_POST['msg']);
+	$_POST['msg']   = nl2br('Nome: '. $nome ."\r\n". 'E-mail de retorno: '. $emailRemetente ."\r\n". 'Telefone: '. $telefone ."\r\n". 'Assunto: '. $_POST['msg']);
 
 	// *********************************** A PARTIR DAQUI NAO ALTERAR ***********************************
 
